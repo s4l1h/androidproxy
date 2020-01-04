@@ -20,3 +20,5 @@ git clone --recurse-submodules https://github.com/s4l1h/androidproxy
 
 cd androidproxy; sh install.sh
 
+![Diagram](diagram.svg)
+
