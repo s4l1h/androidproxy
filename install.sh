@@ -1,11 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/sh
 echo "Install Dependencies"
 pkg upgrade
-pkg install git
+#pkg install git
 pkg install openssh
 pkg install golang
 
-export BOOTDIR=$HOME/.termux/boot/
 export ANDROIDPROXYDIR=$HOME/androidproxy
 
 echo "Build FRPC"
@@ -23,15 +22,7 @@ echo "Copy public key"
 # Make sure the folder .ssh folder has the correct permissions
 chmod 700 $HOME/.ssh
 chmod 755 -R $ANDROIDPROXYDIR/boot
+chmod 755 -R $ANDROIDPROXYDIR/*
 
-echo "Create Termux-Boot Directory"
-mkdir -p $BOOTDIR
-echo "Creating Smylinks for boot"
-ln -s $ANDROIDPROXYDIR/boot/start-sshd $BOOTDIR/start-sshd
-ln -s $ANDROIDPROXYDIR/boot/start-proxy $BOOTDIR/start-proxy
-ln -s $ANDROIDPROXYDIR/boot/start-frpc $BOOTDIR/start-frpc
-
-echo "Start Services"
-$BOOTDIR/start-sshd
-$BOOTDIR/start-proxy
-$BOOTDIR/start-frpc
+echo "Done"
+echo "Now you can run start.sh for starting services"
